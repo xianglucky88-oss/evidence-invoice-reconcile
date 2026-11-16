@@ -1,0 +1,28 @@
+{
+  "invoices": [
+    {
+      "number": "A1",
+      "net": "100.00",
+      "tax_rate": "0.13",
+      "tax": "13.00",
+      "status": "normal"
+    },
+    {
+      "number": "A1-R",
+      "net": "-100.00",
+      "tax_rate": "0.13",
+      "tax": "-13.00",
+      "status": "red"
+    },
+    {
+      "number": "B1",
+      "net": "50.00",
+      "tax_rate": "0.06",
+      "tax": "2.00",
+      "status": "normal"
+    }
+  ],
+  "payments": [
+    "A1"
+  ]
+}
