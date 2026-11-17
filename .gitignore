@@ -13,6 +13,10 @@ htmlcov/
 !.env.example
 config.local.*
 
+# QA layer generated artifacts (golden snapshots under qa/snapshots are kept)
+qa/report.json
+qa/_mutants/
+
 # Private keys, certificates, credentials, connection strings, and tokens
 *.pem
 *.key

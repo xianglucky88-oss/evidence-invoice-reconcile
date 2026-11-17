@@ -1,0 +1,305 @@
+{
+  "diffs": [],
+  "input": {
+    "invoices": [
+      {
+        "net": "100.00",
+        "number": "M1",
+        "status": "normal",
+        "tax": "13.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "200.00",
+        "number": "M2",
+        "status": "normal",
+        "tax": "38.00",
+        "tax_rate": "0.19"
+      },
+      {
+        "net": "50.00",
+        "number": "M3",
+        "status": "normal",
+        "tax": "3.00",
+        "tax_rate": "0.06"
+      }
+    ],
+    "payments": [
+      {
+        "amount": "50.00",
+        "number": "M1"
+      },
+      {
+        "amount": "999.99",
+        "number": "M2"
+      },
+      {
+        "amount": "7.00",
+        "number": "GHOST"
+      },
+      "M3",
+      "M3"
+    ]
+  },
+  "name": "multi-partial-payment",
+  "oracle": {
+    "allocations": [
+      {
+        "allocated": "50.00",
+        "duplicate_payments": 0,
+        "invoice_gross": "113.00",
+        "number": "M1",
+        "payment_count": 1,
+        "remaining": "63.00",
+        "status": "partial"
+      },
+      {
+        "allocated": "999.99",
+        "duplicate_payments": 0,
+        "invoice_gross": "238.00",
+        "number": "M2",
+        "payment_count": 1,
+        "remaining": "-761.99",
+        "status": "overpaid"
+      },
+      {
+        "allocated": "106.00",
+        "duplicate_payments": 1,
+        "invoice_gross": "53.00",
+        "number": "M3",
+        "payment_count": 2,
+        "remaining": "-53.00",
+        "status": "overpaid"
+      }
+    ],
+    "conservation_residual": "0.00",
+    "diffs": [
+      {
+        "declared": "50.00",
+        "delta": "-63.00",
+        "expected": "113.00",
+        "field": "payment:partial",
+        "location": "invoice:M1",
+        "reasons": [
+          "partial"
+        ]
+      },
+      {
+        "declared": "999.99",
+        "delta": "761.99",
+        "expected": "238.00",
+        "field": "payment:overpaid",
+        "location": "invoice:M2",
+        "reasons": [
+          "overpaid"
+        ]
+      },
+      {
+        "declared": "106.00",
+        "delta": "53.00",
+        "expected": "53.00",
+        "field": "payment:overpaid",
+        "location": "invoice:M3",
+        "reasons": [
+          "overpaid",
+          "duplicate_payment"
+        ]
+      },
+      {
+        "declared": null,
+        "delta": null,
+        "expected": null,
+        "field": "payment:unknown_invoice",
+        "location": "payment:GHOST",
+        "reasons": [
+          "unknown_invoice"
+        ]
+      }
+    ],
+    "duplicate_invoice_numbers": [],
+    "duplicate_payment_keys": [
+      [
+        "M3",
+        null
+      ]
+    ],
+    "exceptions": [],
+    "gross_from_line_rounded_tax": "404.00",
+    "gross_from_summary_rounded_tax": "404.00",
+    "gross_total": "404.00",
+    "lines": [
+      {
+        "declared_tax": "13.00",
+        "expected_tax_line_rounded": "13.00",
+        "expected_tax_summary_rounded": "13.00",
+        "findings": [],
+        "gross": "113.00",
+        "index": 0,
+        "is_reversal": false,
+        "net": "100.00",
+        "number": "M1",
+        "raw_tax_product": "13.0000",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "declared_tax": "38.00",
+        "expected_tax_line_rounded": "38.00",
+        "expected_tax_summary_rounded": "38.00",
+        "findings": [],
+        "gross": "238.00",
+        "index": 1,
+        "is_reversal": false,
+        "net": "200.00",
+        "number": "M2",
+        "raw_tax_product": "38.0000",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.19"
+      },
+      {
+        "declared_tax": "3.00",
+        "expected_tax_line_rounded": "3.00",
+        "expected_tax_summary_rounded": "3.00",
+        "findings": [],
+        "gross": "53.00",
+        "index": 2,
+        "is_reversal": false,
+        "net": "50.00",
+        "number": "M3",
+        "raw_tax_product": "3.0000",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.06"
+      }
+    ],
+    "net_total": "350.00",
+    "payments": [
+      {
+        "invoice_exists": true,
+        "is_duplicate": false,
+        "number": "M1",
+        "requested_amount": "50.00",
+        "token_index": 0
+      },
+      {
+        "invoice_exists": true,
+        "is_duplicate": false,
+        "number": "M2",
+        "requested_amount": "999.99",
+        "token_index": 1
+      },
+      {
+        "invoice_exists": false,
+        "is_duplicate": false,
+        "number": "GHOST",
+        "requested_amount": "7.00",
+        "token_index": 2
+      },
+      {
+        "invoice_exists": true,
+        "is_duplicate": false,
+        "number": "M3",
+        "requested_amount": null,
+        "token_index": 3
+      },
+      {
+        "invoice_exists": true,
+        "is_duplicate": true,
+        "number": "M3",
+        "requested_amount": null,
+        "token_index": 4
+      }
+    ],
+    "rounding_level": "line",
+    "tax_total_declared": "54.00",
+    "unknown_payment_numbers": [
+      "GHOST"
+    ]
+  },
+  "oracle_envelope": {
+    "exceptions": [],
+    "gross_total": "404.00",
+    "paid_numbers": [
+      {
+        "amount": "50.00",
+        "number": "M1"
+      },
+      {
+        "amount": "999.99",
+        "number": "M2"
+      },
+      {
+        "amount": "7.00",
+        "number": "GHOST"
+      },
+      "M3",
+      "M3"
+    ]
+  },
+  "views": {
+    "engine": {
+      "exceptions": [],
+      "gross_total": "404.00",
+      "paid_numbers": [
+        {
+          "amount": "50.00",
+          "number": "M1"
+        },
+        {
+          "amount": "999.99",
+          "number": "M2"
+        },
+        {
+          "amount": "7.00",
+          "number": "GHOST"
+        },
+        "M3",
+        "M3"
+      ]
+    },
+    "parser": [
+      {
+        "net": "100.00",
+        "number": "M1",
+        "status": "normal",
+        "tax": "13.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "200.00",
+        "number": "M2",
+        "status": "normal",
+        "tax": "38.00",
+        "tax_rate": "0.19"
+      },
+      {
+        "net": "50.00",
+        "number": "M3",
+        "status": "normal",
+        "tax": "3.00",
+        "tax_rate": "0.06"
+      }
+    ],
+    "pipeline": {
+      "exceptions": [],
+      "gross_total": "404.00",
+      "paid_numbers": [
+        {
+          "amount": "50.00",
+          "number": "M1"
+        },
+        {
+          "amount": "999.99",
+          "number": "M2"
+        },
+        {
+          "amount": "7.00",
+          "number": "GHOST"
+        },
+        "M3",
+        "M3"
+      ],
+      "project": "evidence-invoice-reconcile",
+      "status": "ok"
+    }
+  }
+}

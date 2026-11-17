@@ -1,0 +1,160 @@
+{
+  "diffs": [],
+  "input": {
+    "invoices": [
+      {
+        "net": "0.00",
+        "number": "Z1",
+        "status": "normal",
+        "tax": "0.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "-120.55",
+        "number": "N1",
+        "status": "red",
+        "tax": "-8.44",
+        "tax_rate": "0.07"
+      },
+      {
+        "net": "-120.55",
+        "number": "N1-R",
+        "status": "red",
+        "tax": "-8.44",
+        "tax_rate": "0.07"
+      }
+    ],
+    "payments": []
+  },
+  "name": "zero-negative",
+  "oracle": {
+    "allocations": [
+      {
+        "allocated": "0.00",
+        "duplicate_payments": 0,
+        "invoice_gross": "-128.99",
+        "number": "N1",
+        "payment_count": 0,
+        "remaining": "-128.99",
+        "status": "unpaid"
+      },
+      {
+        "allocated": "0.00",
+        "duplicate_payments": 0,
+        "invoice_gross": "-128.99",
+        "number": "N1-R",
+        "payment_count": 0,
+        "remaining": "-128.99",
+        "status": "unpaid"
+      },
+      {
+        "allocated": "0.00",
+        "duplicate_payments": 0,
+        "invoice_gross": "0.00",
+        "number": "Z1",
+        "payment_count": 0,
+        "remaining": "0.00",
+        "status": "unpaid"
+      }
+    ],
+    "conservation_residual": "0.00",
+    "diffs": [],
+    "duplicate_invoice_numbers": [],
+    "duplicate_payment_keys": [],
+    "exceptions": [],
+    "gross_from_line_rounded_tax": "-257.98",
+    "gross_from_summary_rounded_tax": "-257.98",
+    "gross_total": "-257.98",
+    "lines": [
+      {
+        "declared_tax": "0.00",
+        "expected_tax_line_rounded": "0.00",
+        "expected_tax_summary_rounded": "0.00",
+        "findings": [],
+        "gross": "0.00",
+        "index": 0,
+        "is_reversal": false,
+        "net": "0.00",
+        "number": "Z1",
+        "raw_tax_product": "0.0000",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "declared_tax": "-8.44",
+        "expected_tax_line_rounded": "-8.44",
+        "expected_tax_summary_rounded": "-8.44",
+        "findings": [],
+        "gross": "-128.99",
+        "index": 1,
+        "is_reversal": false,
+        "net": "-120.55",
+        "number": "N1",
+        "raw_tax_product": "-8.4385",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.07"
+      },
+      {
+        "declared_tax": "-8.44",
+        "expected_tax_line_rounded": "-8.44",
+        "expected_tax_summary_rounded": "-8.44",
+        "findings": [],
+        "gross": "-128.99",
+        "index": 2,
+        "is_reversal": true,
+        "net": "-120.55",
+        "number": "N1-R",
+        "raw_tax_product": "-8.4385",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.07"
+      }
+    ],
+    "net_total": "-241.10",
+    "payments": [],
+    "rounding_level": "line",
+    "tax_total_declared": "-16.88",
+    "unknown_payment_numbers": []
+  },
+  "oracle_envelope": {
+    "exceptions": [],
+    "gross_total": "-257.98",
+    "paid_numbers": []
+  },
+  "views": {
+    "engine": {
+      "exceptions": [],
+      "gross_total": "-257.98",
+      "paid_numbers": []
+    },
+    "parser": [
+      {
+        "net": "0.00",
+        "number": "Z1",
+        "status": "normal",
+        "tax": "0.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "-120.55",
+        "number": "N1",
+        "status": "red",
+        "tax": "-8.44",
+        "tax_rate": "0.07"
+      },
+      {
+        "net": "-120.55",
+        "number": "N1-R",
+        "status": "red",
+        "tax": "-8.44",
+        "tax_rate": "0.07"
+      }
+    ],
+    "pipeline": {
+      "exceptions": [],
+      "gross_total": "-257.98",
+      "paid_numbers": [],
+      "project": "evidence-invoice-reconcile",
+      "status": "ok"
+    }
+  }
+}

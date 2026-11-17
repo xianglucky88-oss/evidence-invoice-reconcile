@@ -1,0 +1,237 @@
+{
+  "diffs": [],
+  "input": {
+    "invoices": [
+      {
+        "net": "1.05",
+        "number": "H1",
+        "status": "normal",
+        "tax": "0.14",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "1.01",
+        "number": "H2",
+        "status": "normal",
+        "tax": "0.13",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "0.25",
+        "number": "H3",
+        "status": "normal",
+        "tax": "0.02",
+        "tax_rate": "0.06"
+      }
+    ],
+    "payments": [
+      "H1",
+      "H1",
+      {
+        "amount": "0.50",
+        "number": "H2"
+      }
+    ]
+  },
+  "name": "half-cent",
+  "oracle": {
+    "allocations": [
+      {
+        "allocated": "2.38",
+        "duplicate_payments": 1,
+        "invoice_gross": "1.19",
+        "number": "H1",
+        "payment_count": 2,
+        "remaining": "-1.19",
+        "status": "overpaid"
+      },
+      {
+        "allocated": "0.50",
+        "duplicate_payments": 0,
+        "invoice_gross": "1.14",
+        "number": "H2",
+        "payment_count": 1,
+        "remaining": "0.64",
+        "status": "partial"
+      },
+      {
+        "allocated": "0.00",
+        "duplicate_payments": 0,
+        "invoice_gross": "0.27",
+        "number": "H3",
+        "payment_count": 0,
+        "remaining": "0.27",
+        "status": "unpaid"
+      }
+    ],
+    "conservation_residual": "0.00",
+    "diffs": [
+      {
+        "declared": "2.38",
+        "delta": "1.19",
+        "expected": "1.19",
+        "field": "payment:overpaid",
+        "location": "invoice:H1",
+        "reasons": [
+          "overpaid",
+          "duplicate_payment"
+        ]
+      },
+      {
+        "declared": "0.50",
+        "delta": "-0.64",
+        "expected": "1.14",
+        "field": "payment:partial",
+        "location": "invoice:H2",
+        "reasons": [
+          "partial"
+        ]
+      }
+    ],
+    "duplicate_invoice_numbers": [],
+    "duplicate_payment_keys": [
+      [
+        "H1",
+        null
+      ]
+    ],
+    "exceptions": [],
+    "gross_from_line_rounded_tax": "2.60",
+    "gross_from_summary_rounded_tax": "2.59",
+    "gross_total": "2.60",
+    "lines": [
+      {
+        "declared_tax": "0.14",
+        "expected_tax_line_rounded": "0.14",
+        "expected_tax_summary_rounded": "0.14",
+        "findings": [],
+        "gross": "1.19",
+        "index": 0,
+        "is_reversal": false,
+        "net": "1.05",
+        "number": "H1",
+        "raw_tax_product": "0.1365",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "declared_tax": "0.13",
+        "expected_tax_line_rounded": "0.13",
+        "expected_tax_summary_rounded": "0.13",
+        "findings": [],
+        "gross": "1.14",
+        "index": 1,
+        "is_reversal": false,
+        "net": "1.01",
+        "number": "H2",
+        "raw_tax_product": "0.1313",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.13"
+      },
+      {
+        "declared_tax": "0.02",
+        "expected_tax_line_rounded": "0.02",
+        "expected_tax_summary_rounded": "0.02",
+        "findings": [],
+        "gross": "0.27",
+        "index": 2,
+        "is_reversal": false,
+        "net": "0.25",
+        "number": "H3",
+        "raw_tax_product": "0.0150",
+        "rounding_delta": "0.00",
+        "tax_rate": "0.06"
+      }
+    ],
+    "net_total": "2.31",
+    "payments": [
+      {
+        "invoice_exists": true,
+        "is_duplicate": false,
+        "number": "H1",
+        "requested_amount": null,
+        "token_index": 0
+      },
+      {
+        "invoice_exists": true,
+        "is_duplicate": true,
+        "number": "H1",
+        "requested_amount": null,
+        "token_index": 1
+      },
+      {
+        "invoice_exists": true,
+        "is_duplicate": false,
+        "number": "H2",
+        "requested_amount": "0.50",
+        "token_index": 2
+      }
+    ],
+    "rounding_level": "line",
+    "tax_total_declared": "0.29",
+    "unknown_payment_numbers": []
+  },
+  "oracle_envelope": {
+    "exceptions": [],
+    "gross_total": "2.60",
+    "paid_numbers": [
+      "H1",
+      "H1",
+      {
+        "amount": "0.50",
+        "number": "H2"
+      }
+    ]
+  },
+  "views": {
+    "engine": {
+      "exceptions": [],
+      "gross_total": "2.60",
+      "paid_numbers": [
+        "H1",
+        "H1",
+        {
+          "amount": "0.50",
+          "number": "H2"
+        }
+      ]
+    },
+    "parser": [
+      {
+        "net": "1.05",
+        "number": "H1",
+        "status": "normal",
+        "tax": "0.14",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "1.01",
+        "number": "H2",
+        "status": "normal",
+        "tax": "0.13",
+        "tax_rate": "0.13"
+      },
+      {
+        "net": "0.25",
+        "number": "H3",
+        "status": "normal",
+        "tax": "0.02",
+        "tax_rate": "0.06"
+      }
+    ],
+    "pipeline": {
+      "exceptions": [],
+      "gross_total": "2.60",
+      "paid_numbers": [
+        "H1",
+        "H1",
+        {
+          "amount": "0.50",
+          "number": "H2"
+        }
+      ],
+      "project": "evidence-invoice-reconcile",
+      "status": "ok"
+    }
+  }
+}
