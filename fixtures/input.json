@@ -1,28 +1,347 @@
 {
+  "rule_version": "TAX-2018.5",
+  "fiscal_period": "2026-10",
   "invoices": [
     {
-      "number": "A1",
+      "number": "INV-MULTI-01",
+      "status": "normal",
+      "counterparty": "Acme Co",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2018.5",
+      "net": "1000.00",
+      "tax": "95.00",
+      "certified_at": "2026-10-05T09:00:00Z",
+      "booked_at": "2026-10-06T10:00:00Z",
+      "export_id": "EXP-1",
+      "source_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "evidence": [
+        {
+          "source": "ocr",
+          "file_id": "ocr-multi-01.pdf",
+          "hash": "aaaaaaaa11111111111111111111111111111111111111111111111111111111",
+          "observed_at": "2026-10-04T08:00:00Z",
+          "locator": "page=1"
+        },
+        {
+          "source": "api",
+          "file_id": "api-multi-01.json",
+          "hash": "aaaaaaaa11111111111111111111111111111111111111111111111111111111",
+          "observed_at": "2026-10-04T08:05:00Z",
+          "locator": "$.invoice"
+        }
+      ],
+      "lines": [
+        {
+          "description": "货物A",
+          "rate_code": "goods",
+          "net": "600.00",
+          "tax": "78.00",
+          "evidence": [
+            {
+              "source": "api",
+              "file_id": "api-multi-01.json",
+              "hash": "aaaaaaaa11111111111111111111111111111111111111111111111111111111",
+              "locator": "$.invoice.lines[0]"
+            }
+          ]
+        },
+        {
+          "description": "服务B",
+          "rate_code": "service",
+          "net": "400.00",
+          "tax": "17.00",
+          "evidence": [
+            {
+              "source": "api",
+              "file_id": "api-multi-01.json",
+              "hash": "aaaaaaaa11111111111111111111111111111111111111111111111111111111",
+              "locator": "$.invoice.lines[1]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "INV-BLUE-02",
+      "status": "normal",
+      "counterparty": "Globex",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2018.5",
+      "net": "200.00",
+      "tax": "26.00",
+      "certified_at": "2026-10-10T09:00:00Z",
+      "export_id": "EXP-1",
+      "source_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+      "evidence": [
+        {
+          "source": "ocr",
+          "file_id": "ocr-blue-02.pdf",
+          "hash": "2395b98d940ad0ee1058d361df2d3b069fbae90d71d40e2843b8a3303edf88e2",
+          "locator": "page=1"
+        }
+      ],
+      "lines": [
+        {
+          "description": "货物C",
+          "rate_code": "goods",
+          "net": "200.00",
+          "tax": "26.00"
+        }
+      ]
+    },
+    {
+      "number": "INV-BLUE-03",
+      "status": "normal",
+      "counterparty": "Globex",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2018.5",
       "net": "100.00",
-      "tax_rate": "0.13",
       "tax": "13.00",
-      "status": "normal"
+      "certified_at": "2026-10-11T09:00:00Z",
+      "export_id": "EXP-1",
+      "source_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+      "evidence": [
+        {
+          "source": "ocr",
+          "file_id": "ocr-blue-03.pdf",
+          "hash": "a73b62c77c31c0416fcd91c740a69b4c92365c4bf0c6dea30af2f4c5ab95863c",
+          "locator": "page=1"
+        }
+      ],
+      "lines": [
+        {
+          "description": "货物D",
+          "rate_code": "goods",
+          "net": "100.00",
+          "tax": "13.00"
+        }
+      ]
     },
     {
-      "number": "A1-R",
-      "net": "-100.00",
-      "tax_rate": "0.13",
-      "tax": "-13.00",
-      "status": "red"
+      "number": "INV-RED-04",
+      "status": "red",
+      "counterparty": "Globex",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2018.5",
+      "net": "-300.00",
+      "tax": "-39.00",
+      "certified_at": "2026-10-20T09:00:00Z",
+      "export_id": "EXP-2",
+      "source_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+      "red_links": [
+        "INV-BLUE-02",
+        "INV-BLUE-03"
+      ],
+      "evidence": [
+        {
+          "source": "ocr",
+          "file_id": "ocr-red-04.pdf",
+          "hash": "82750c29cedbcb4458a4c432521d67ba2cd0be857dbdb4e2f22ffa326b41185f",
+          "locator": "page=1"
+        },
+        {
+          "source": "api",
+          "file_id": "api-red-04.json",
+          "hash": "82750c29cedbcb4458a4c432521d67ba2cd0be857dbdb4e2f22ffa326b41185f",
+          "locator": "$.credit_note"
+        }
+      ],
+      "lines": [
+        {
+          "description": "货物C退回",
+          "rate_code": "goods",
+          "net": "-200.00",
+          "tax": "-26.00"
+        },
+        {
+          "description": "货物D退回",
+          "rate_code": "goods",
+          "net": "-100.00",
+          "tax": "-13.00"
+        }
+      ]
     },
     {
-      "number": "B1",
-      "net": "50.00",
-      "tax_rate": "0.06",
-      "tax": "2.00",
-      "status": "normal"
+      "number": "INV-MULTI-01",
+      "status": "normal",
+      "counterparty": "Acme Co",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2018.5",
+      "net": "1000.00",
+      "tax": "102.00",
+      "export_id": "EXP-2",
+      "source_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "evidence": [
+        {
+          "source": "ocr",
+          "file_id": "ocr-multi-01.pdf",
+          "hash": "aaaaaaaa11111111111111111111111111111111111111111111111111111111",
+          "locator": "page=1"
+        },
+        {
+          "source": "api",
+          "file_id": "api-multi-01.json",
+          "hash": "aaaaaaaa11111111111111111111111111111111111111111111111111111111",
+          "locator": "$.invoice"
+        }
+      ],
+      "lines": [
+        {
+          "description": "货物A",
+          "rate_code": "goods",
+          "net": "600.00",
+          "tax": "78.00"
+        },
+        {
+          "description": "服务B",
+          "rate_code": "service",
+          "net": "400.00",
+          "tax": "24.00"
+        }
+      ]
+    },
+    {
+      "number": "INV-ROUND-05",
+      "status": "normal",
+      "counterparty": "Initech",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2018.5",
+      "net": "0.03",
+      "tax": "0.01",
+      "certified_at": "2026-10-12T09:00:00Z",
+      "export_id": "EXP-1",
+      "source_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+      "evidence": [
+        {
+          "source": "api",
+          "file_id": "api-round-05.json",
+          "hash": "b7270e21543707ce48ac9d266409d5cfd8d48aa876e1c5453219ed291d3b6051",
+          "locator": "$.invoice"
+        }
+      ],
+      "lines": [
+        {
+          "description": "边界货物",
+          "rate_code": "goods",
+          "net": "0.03",
+          "tax": "0.01"
+        }
+      ]
+    },
+    {
+      "number": "INV-CROSS-06",
+      "status": "normal",
+      "counterparty": "Umbrella",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2018.5",
+      "net": "500.00",
+      "tax": "65.00",
+      "certified_at": "2026-10-25T09:00:00Z",
+      "export_id": "EXP-1",
+      "source_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+      "evidence": [
+        {
+          "source": "ocr",
+          "file_id": "ocr-cross-06.pdf",
+          "hash": "dadbf081ec5f2763dc36505ba1cde95ade525ac7b5b7f845e57a188a2d0f7acd",
+          "locator": "page=1"
+        }
+      ],
+      "lines": [
+        {
+          "description": "货物E",
+          "rate_code": "goods",
+          "net": "500.00",
+          "tax": "65.00"
+        }
+      ]
+    },
+    {
+      "number": "INV-ROUND-07",
+      "status": "normal",
+      "counterparty": "HalfEven Ltd",
+      "fiscal_period": "2026-10",
+      "rule_version": "TAX-2019.4",
+      "net": "0.03",
+      "tax": "0.01",
+      "certified_at": "2026-10-13T09:00:00Z",
+      "export_id": "EXP-1",
+      "source_hash": "13a534da09719507f3644de4519ebe3df149a659c9b47c2f8f4988e4865fb70a",
+      "evidence": [
+        {
+          "source": "api",
+          "file_id": "api-round-07.json",
+          "hash": "ced5df0e5f2ae433a03ff3bc04c91b765f238bf474691c81bb1bac17149b68f5",
+          "locator": "$.invoice"
+        }
+      ],
+      "lines": [
+        {
+          "description": "边界服务1",
+          "rate_code": "service",
+          "net": "0.01",
+          "tax": "0.00"
+        },
+        {
+          "description": "边界服务2",
+          "rate_code": "service",
+          "net": "0.01",
+          "tax": "0.00"
+        },
+        {
+          "description": "边界服务3",
+          "rate_code": "service",
+          "net": "0.01",
+          "tax": "0.00"
+        }
+      ]
     }
   ],
   "payments": [
-    "A1"
+    {
+      "payment_id": "PAY-MULTI-01",
+      "invoice_number": "INV-MULTI-01",
+      "amount": "1095.00",
+      "paid_at": "2026-10-07T09:00:00Z",
+      "fiscal_period": "2026-10",
+      "evidence": [
+        {
+          "source": "payment",
+          "file_id": "pay-multi-01.txt",
+          "hash": "a1a1a1a111111111111111111111111111111111111111111111111111111111",
+          "locator": "line=2"
+        }
+      ]
+    },
+    {
+      "payment_id": "PAY-CROSS-06",
+      "invoice_number": "INV-CROSS-06",
+      "amount": "200.00",
+      "paid_at": "2026-11-03T09:00:00Z",
+      "fiscal_period": "2026-11",
+      "evidence": [
+        {
+          "source": "payment",
+          "file_id": "pay-cross-06.txt",
+          "hash": "b2b2b2b266666666666666666666666666666666666666666666666666666666",
+          "locator": "line=5"
+        }
+      ]
+    },
+    {
+      "payment_id": "PAY-ORPHAN",
+      "invoice_number": "INV-GHOST-99",
+      "amount": "80.00",
+      "paid_at": "2026-10-15T09:00:00Z",
+      "fiscal_period": "2026-10",
+      "evidence": [
+        {
+          "source": "payment",
+          "file_id": "pay-orphan.txt",
+          "hash": "c3c3c3c399999999999999999999999999999999999999999999999999999999",
+          "locator": "line=9"
+        }
+      ]
+    }
   ]
 }
